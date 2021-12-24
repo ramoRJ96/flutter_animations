@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/animation_demo/animated_opacity.dart';
+import 'package:flutter_animations/animation_demo/fade_in.dart';
 import 'package:flutter_animations/models/material_design.dart';
 import 'package:flutter_animations/models/section.dart';
+import 'package:flutter_animations/widgets/tile.dart';
 
 
 class OtherAnimatedList extends StatelessWidget {
@@ -12,10 +15,10 @@ class OtherAnimatedList extends StatelessWidget {
      List<Section> _sections = [
       Section(name: 'Fade in', 
       icon: Icons.menu, 
-      destination: EmptyWidget()),
+      destination: FadeInDemo()),
       Section(name: 'Opacité', 
       icon: Icons.menu, 
-      destination: EmptyWidget()),
+      destination: AnimatedOpacityDemo()),
       Section(name: 'Cross Fade', 
       icon: Icons.menu, 
       destination: EmptyWidget()),
@@ -30,8 +33,10 @@ class OtherAnimatedList extends StatelessWidget {
       destination: EmptyWidget()),
     ];
 
-    return Container(
-      
-    );
+    return ListView.separated(
+      itemBuilder: (context, index) => Tile(section: _sections[index]), 
+      separatorBuilder: (context, index) => MyDivider(), 
+      itemCount: _sections.length
+      );
   }
 }
