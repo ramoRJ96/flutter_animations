@@ -3,6 +3,7 @@ import 'package:flutter_animations/animation_demo/animated_container.dart';
 import 'package:flutter_animations/models/data.dart';
 import 'package:flutter_animations/models/material_design.dart';
 import 'package:flutter_animations/models/section.dart';
+import 'package:flutter_animations/pages/hero_list.dart';
 import 'package:flutter_animations/pages/other_animated_list.dart';
 import 'package:flutter_animations/widgets/tile.dart';
 
@@ -19,6 +20,9 @@ class HomePage extends StatelessWidget {
       Section(name: 'Les autres animated', 
       icon: Icons.local_movies, 
       destination: OtherAnimatedList()),
+      Section(name: 'Hero', 
+      icon: Icons.flash_on, 
+      destination: HeroList()),
     ];
 
     return Scaffold(
