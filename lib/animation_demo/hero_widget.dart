@@ -10,7 +10,6 @@ class HeroWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(tag: url,
     child: Image.asset(url, fit: BoxFit.cover),
-      
     );
   }
 }

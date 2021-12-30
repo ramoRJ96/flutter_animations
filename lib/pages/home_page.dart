@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations/animation_demo/animated_container.dart';
+import 'package:flutter_animations/animation_demo/animation_list_demo.dart';
 import 'package:flutter_animations/models/data.dart';
 import 'package:flutter_animations/models/material_design.dart';
 import 'package:flutter_animations/models/section.dart';
@@ -23,6 +24,9 @@ class HomePage extends StatelessWidget {
       Section(name: 'Hero', 
       icon: Icons.flash_on, 
       destination: HeroList()),
+      Section(name: 'Animated List', 
+      icon: Icons.list, 
+      destination: AnimationListDemo()),
     ];
 
     return Scaffold(
