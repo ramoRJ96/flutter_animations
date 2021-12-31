@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class AnimationListDemo extends StatefulWidget {
@@ -48,7 +50,6 @@ class _AnimationListDemoState extends State<AnimationListDemo> {
           icon: Icon(Icons.delete),
           onPressed: () {
             _removeItem(index);
-
           },
         ),
       ),
@@ -56,7 +57,7 @@ class _AnimationListDemoState extends State<AnimationListDemo> {
   }
 
   _addItem(String name) {
-    int index = items.length;
+    int index = items.isEmpty ? 0 : Random().nextInt(items.length);
     items.insert(index, name);
     _key.currentState!.insertItem(index);
   }
