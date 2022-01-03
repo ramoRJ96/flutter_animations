@@ -16,7 +16,7 @@ class AnimationControllerDemo extends StatefulWidget {
 
 class _AnimationControllerDemoState extends State<AnimationControllerDemo>
     with SingleTickerProviderStateMixin {
-  final Image _image = Image.asset(Data().flutter );
+  final Image _image = Image.asset(Data().flutter);
   late AnimationController _animationController;
   final Duration _duration = Duration(seconds: 1);
   late DecorationTween _decorationTween;
@@ -24,17 +24,14 @@ class _AnimationControllerDemoState extends State<AnimationControllerDemo>
   late CurvedAnimation _curvedAnimation;
   bool isAnimated = false;
 
-
   @override
   void initState() {
     super.initState();
     _animationController =
         AnimationController(duration: _duration, vsync: this);
-    _curvedAnimation = CurvedAnimation(
-      parent: _animationController, 
-      curve: Curves.easeInOut);
+    _curvedAnimation =
+        CurvedAnimation(parent: _animationController, curve: Curves.easeInOut);
     setupDecoration();
-
   }
 
   setupDecoration() {
@@ -59,7 +56,7 @@ class _AnimationControllerDemoState extends State<AnimationControllerDemo>
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    double max = size.width;
+    double max = size.width - 20;
 
     return Padding(
       padding: const EdgeInsets.all(20.0),
@@ -74,13 +71,14 @@ class _AnimationControllerDemoState extends State<AnimationControllerDemo>
               child: transition(),
             ),
           ),
-          TextButton(onPressed: () {
-            setState(() {
-              isAnimated = !isAnimated;
-            });
-            performTransition();
-          }, 
-          child: Text('Faire la transition')),
+          TextButton(
+              onPressed: () {
+                setState(() {
+                  isAnimated = !isAnimated;
+                });
+                performTransition();
+              },
+              child: Text('Faire la transition')),
         ],
       ),
     );
@@ -90,6 +88,8 @@ class _AnimationControllerDemoState extends State<AnimationControllerDemo>
     switch (widget.type) {
       case TransitionType.decoratedBox:
         return decoratedBox();
+      case TransitionType.fade:
+        return fade();
       default:
         return EmptyWidget();
     }
@@ -99,11 +99,20 @@ class _AnimationControllerDemoState extends State<AnimationControllerDemo>
     return DecoratedBoxTransition(
       decoration: _animationDecoration,
       child: _image,
-      
     );
   }
 
-  performTransition()  {
+  FadeTransition fade() {
+    return FadeTransition(
+      child: _image,
+      opacity: Tween<double>(begin: 1, end: 0.33).animate(
+          CurvedAnimation(
+            parent: _animationController, 
+            curve: Curves.easeIn)),
+    );
+  }
+
+  performTransition() {
     if (!isAnimated) {
       _animationController.forward();
     } else {
