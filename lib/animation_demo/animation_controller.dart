@@ -23,6 +23,7 @@ class _AnimationControllerDemoState extends State<AnimationControllerDemo>
   late Animation<Decoration> _animationDecoration;
   late CurvedAnimation _curvedAnimation;
   bool isAnimated = false;
+  late double max;
 
   @override
   void initState() {
@@ -56,7 +57,7 @@ class _AnimationControllerDemoState extends State<AnimationControllerDemo>
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    double max = size.width - 20;
+    max = size.width - 20;
 
     return Padding(
       padding: const EdgeInsets.all(20.0),
@@ -90,6 +91,16 @@ class _AnimationControllerDemoState extends State<AnimationControllerDemo>
         return decoratedBox();
       case TransitionType.fade:
         return fade();
+      case TransitionType.positioned:
+        return positioned();
+      case TransitionType.rotation:
+        return rotation();
+      case TransitionType.scale:
+        return scale();
+      case TransitionType.size:
+        return size();
+      case TransitionType.slide:
+        return slide();
       default:
         return EmptyWidget();
     }
@@ -106,10 +117,59 @@ class _AnimationControllerDemoState extends State<AnimationControllerDemo>
     return FadeTransition(
       child: _image,
       opacity: Tween<double>(begin: 1, end: 0.33).animate(
-          CurvedAnimation(
-            parent: _animationController, 
-            curve: Curves.easeIn)),
+          CurvedAnimation(parent: _animationController, curve: Curves.easeIn)),
     );
+  }
+
+  Widget positioned() {
+    return Stack(
+      children: <Widget>[
+        PositionedTransition(
+            rect: RelativeRectTween(
+              begin: RelativeRect.fromLTRB(0, 0, 0, 0),
+              end: RelativeRect.fromLTRB(max, max, max, max),
+            ).animate(CurvedAnimation(
+                parent: _animationController, curve: Curves.slowMiddle)),
+            child: Container(
+              color: Colors.orange,
+            )),
+        PositionedTransition(
+            rect: RelativeRectTween(
+              begin: RelativeRect.fromLTRB(0, 0, 0, 0),
+              end: RelativeRect.fromLTRB(200, 250, 0, 0),
+            ).animate(_curvedAnimation),
+            child: _image)
+      ],
+    );
+  }
+
+  RotationTransition rotation() {
+    return RotationTransition(
+      turns: Tween<double>(begin: 0, end: 1).animate(_curvedAnimation),
+      child: _image,
+    );
+  }
+
+  ScaleTransition scale() {
+    return ScaleTransition(
+      scale: Tween<double>(begin: 0.15, end: 1).animate(_curvedAnimation),
+      child: _image,
+    );
+  }
+
+  SizeTransition size() {
+    return SizeTransition(
+      child: _image,
+      sizeFactor: Tween<double>(begin: 1, end: 0.2).animate(_curvedAnimation),
+      axis: Axis.vertical,
+    );
+  }
+
+  SlideTransition slide() {
+    return SlideTransition(
+        child: _image,
+        position: Tween<Offset>(begin: Offset(1, 1), end: Offset(0, 0))
+            .animate(_curvedAnimation));
   }
 
   performTransition() {
