@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations/animation_demo/animated_cross_fade.dart';
 import 'package:flutter_animations/animation_demo/animated_opacity.dart';
+import 'package:flutter_animations/animation_demo/animated_physical.dart';
 import 'package:flutter_animations/animation_demo/animated_position.dart';
 import 'package:flutter_animations/animation_demo/animated_size.dart';
 import 'package:flutter_animations/animation_demo/animated_text.dart';
@@ -35,6 +36,9 @@ class OtherAnimatedList extends StatelessWidget {
       Section(name: 'Positionnement', 
       icon: Icons.menu, 
       destination: AnimatedPositionDemo()),
+      Section(name: 'Physical model', 
+      icon: Icons.menu, 
+      destination: AnimatedPhysicalDemo()),
     ];
 
     return ListView.separated(

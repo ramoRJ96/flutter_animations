@@ -22,18 +22,30 @@ class Data {
     GreekCity(
       name: 'Athenes', 
       image: greekCity1, 
-      description: 'Athènes, capitale actuelle de la Grèce'),
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,'
+'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum'
+'numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium'
+'optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis'),
     GreekCity(
       name: 'Santorin', 
       image: greekCity2, 
-      description: 'Santorin, capitale actuelle de la Grèce'),
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,'
+'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum'
+'numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium'
+'optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis'),
     GreekCity(
       name: 'Meteores', 
       image: greekCity3, 
-      description: 'Meteores, capitale actuelle de la Grèce'),
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,'
+'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum'
+'numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium'
+'optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis'),
     GreekCity(
       name: 'Sounion', 
       image: greekCity4, 
-      description: 'Athènes, capitale actuelle de la Grèce'),
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,'
+'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum'
+'numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium'
+'optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis'),
   ]; 
 }

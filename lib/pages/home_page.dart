@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/animation_demo/animated_builder.dart';
 import 'package:flutter_animations/animation_demo/animated_container.dart';
 import 'package:flutter_animations/animation_demo/animation_list_demo.dart';
+import 'package:flutter_animations/animation_demo/tinder_anim.dart';
 import 'package:flutter_animations/models/data.dart';
 import 'package:flutter_animations/models/material_design.dart';
 import 'package:flutter_animations/models/section.dart';
@@ -31,6 +33,12 @@ class HomePage extends StatelessWidget {
       Section(name: 'Transitions', 
       icon: Icons.compare_arrows, 
       destination: TransitionList()),
+      Section(name: 'Animated builder', 
+      icon: Icons.build, 
+      destination: AnimatedBuilderDemo()),
+       Section(name: 'Animation tinder', 
+      icon: Icons.photo_library, 
+      destination: TinderAnimDemo()),
     ];
 
     return Scaffold(
